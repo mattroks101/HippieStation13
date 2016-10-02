@@ -167,7 +167,7 @@ var/datum/subsystem/ticker/ticker
 	round_start_time = world.time
 
 	start_landmarks_list = shuffle(start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
-	choose_aspect()
+	choose_aspect()// Pick the aspect.
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
@@ -326,7 +326,7 @@ var/datum/subsystem/ticker/ticker
 
 //################ASPECTS!!################
 /datum/subsystem/ticker/proc/choose_aspect()
-	aspect = pick(/datum/round_event/aspect/lightsout, /datum/round_event/aspect/bad_hop, /datum/round_event/aspect/toolbox_salesman) //
+	aspect = pick(/datum/round_event/aspect/neko, /datum/round_event/aspect/lightsout, /datum/round_event/aspect/bad_hop, /datum/round_event/aspect/toolbox_salesman) //
 	if(aspect)
 		var/datum/round_event/aspect/A = new aspect()
 		world << "<FONT size=3 color='blue'><B>Hail Nanotrasen! [A.description]</B></FONT>"
