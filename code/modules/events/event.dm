@@ -23,6 +23,8 @@
 	var/list/gamemode_blacklist = list() // Event won't happen in these gamemodes
 	var/list/gamemode_whitelist = list() // Event will happen ONLY in these gamemodes if not empty
 
+	var/aspect = 0 //Whether or not it's a one time aspect.
+
 /datum/round_event_control/wizard
 	wizardevent = 1
 
@@ -47,6 +49,7 @@
 	var/endWhen			= 0	//When in the lifetime the event should end.
 
 	var/activeFor		= 0	//How long the event has existed. You don't need to change this.
+
 
 //Called first before processing.
 //Allows you to setup your event, such as randomly

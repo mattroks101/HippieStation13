@@ -8,6 +8,7 @@
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	broken_states = list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
+	sound = "wood"
 
 /turf/simulated/floor/wood/attackby(obj/item/C, mob/user, params)
 	if(..())
@@ -26,6 +27,7 @@
 	icon_state = "grass"
 	floor_tile = /obj/item/stack/tile/grass
 	broken_states = list("sand")
+	sound = "grass"
 
 /turf/simulated/floor/grass/New()
 	..()
@@ -49,6 +51,7 @@
 	broken_states = list("damaged")
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
+	sound = "carpet"
 
 /turf/simulated/floor/carpet/New()
 	..()
@@ -81,6 +84,7 @@
 	icon_state = "0"
 	floor_tile = /obj/item/stack/tile/fakespace
 	broken_states = list("damaged")
+	sound = "carpet"
 
 /turf/simulated/floor/fakespace/New()
 	..()

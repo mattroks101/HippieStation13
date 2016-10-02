@@ -39,12 +39,13 @@ var/datum/subsystem/ticker/ticker
 	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
 
 	var/obj/screen/cinematic = null			//used for station explosion cinematic
-
+	var/aspect = null						//The aspect of the round!
+	var/chosen_aspect = null				//The aspect that got chosen.
 
 /datum/subsystem/ticker/New()
 	NEW_SS_GLOBAL(ticker)
 
-	login_music = pickweight(list('sound/ambience/title2.ogg' = 0, 'sound/ambience/title1.ogg' = 1, 'sound/ambience/title3.ogg' =0, 'sound/ambience/clown.ogg' = 0)) // choose title music!
+	login_music = pickweight(list('sound/ambience/title2.ogg' = 0, 'sound/ambience/title1.ogg' = 1, 'sound/ambience/title3.ogg' = 0, 'sound/ambience/clown.ogg' = 0)) // choose title music!
 	if(SSevent.holidays && SSevent.holidays[APRIL_FOOLS])
 		login_music = 'sound/ambience/clown.ogg'
 
@@ -166,15 +167,17 @@ var/datum/subsystem/ticker/ticker
 	round_start_time = world.time
 
 	start_landmarks_list = shuffle(start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
+	choose_aspect()
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
 	data_core.manifest()
+	
 
 	master_controller.roundHasStarted()
 
 
-	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
+	//world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
 	world << sound(pick('sound/AI/welcome1.ogg', 'sound/AI/welcome2.ogg'))
 
 	if(SSevent.holidays)
@@ -321,6 +324,15 @@ var/datum/subsystem/ticker/ticker
 		else
 			player.new_player_panel()
 
+//################ASPECTS!!################
+/datum/subsystem/ticker/proc/choose_aspect()
+	aspect = pick(/datum/round_event/aspect/lightsout, /datum/round_event/aspect/bad_hop, /datum/round_event/aspect/toolbox_salesman) //
+	if(aspect)
+		var/datum/round_event/aspect/A = new aspect()
+		world << "<FONT size=3 color='blue'><B>Hail Nanotrasen! [A.description]</B></FONT>"
+		chosen_aspect = "<FONT size=3 color='blue'><B>The aspect was: [A.name]. [A.description]</B></FONT>"
+//########################################
+
 
 /datum/subsystem/ticker/proc/collect_minds()
 	for(var/mob/living/player in player_list)
@@ -372,7 +384,9 @@ var/datum/subsystem/ticker/ticker
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
 	var/station_integrity = min(round( 100 * start_state.score(end_state), 0.1), 100)
-
+	
+		
+	
 	world << "<BR>[TAB]Shift Duration: <B>[round(world.time / 36000)]:[add_zero("[world.time / 600 % 60]", 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B>"
 	world << "<BR>[TAB]Station Integrity: <B>[mode.station_was_nuked ? "<font color='red'>Destroyed</font>" : "[station_integrity]%"]</B>"
 	if(joined_player_list.len)
@@ -380,10 +394,15 @@ var/datum/subsystem/ticker/ticker
 		if(station_evacuated)
 			world << "<BR>[TAB]Evacuation Rate: <B>[num_escapees] ([round((num_escapees/joined_player_list.len)*100, 0.1)]%)</B>"
 		world << "<BR>[TAB]Survival Rate: <B>[num_survivors] ([round((num_survivors/joined_player_list.len)*100, 0.1)]%)</B>"
+	world << "<BR>[TAB]<span class=bold>Total Population: <B>[joined_player_list.len]</B>"
 	world << "<BR>"
 
+	world << "[chosen_aspect]"
+	
+
+
 	//Silicon laws report
-	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
+	for(var/mob/living/silicon/ai/aiPlayer in mob_list)
 		if (aiPlayer.stat != 2 && aiPlayer.mind)
 			world << "<b>[aiPlayer.name] (Played by: [aiPlayer.mind.key])'s laws at the end of the round were:</b>"
 			aiPlayer.show_laws(1)

@@ -21,6 +21,7 @@
 /turf/simulated/floor/plating/beach
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
+	sound = "asteroid"
 
 /turf/simulated/floor/plating/beach/ex_act(severity, target)
 	contents_explosion(severity, target)
@@ -29,10 +30,12 @@
 	name = "Sand"
 	icon_state = "sand"
 
+
 /turf/simulated/floor/plating/beach/coastline
 	name = "Coastline"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
+
 
 /turf/simulated/floor/plating/beach/water
 	name = "Water"
@@ -47,6 +50,7 @@
 	name = "snow"
 	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow"
+	sound = "snow"
 
 /turf/simulated/floor/plating/snow/New()
 	icon_state = "snow[rand(1, 7)]"		//This randomizes the icon for snow tiles at run-time or when created between 7 different snow tile icons which are actually VERY nice. Thanks Nienhaus.

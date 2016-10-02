@@ -32,6 +32,7 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 	var/obj/item/stack/tile/builtin_tile = null //needed for performance reasons when the singularity rips off floor tiles
 	var/list/broken_states = list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
 	var/list/burnt_states = list()
+	sound = "plating"
 
 /turf/simulated/floor/New()
 	..()

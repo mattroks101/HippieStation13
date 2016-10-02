@@ -67,3 +67,4 @@
 	var/crit_crawl_damage_type = OXY
 
 	var/ventcrawl_speed = 25 //How long it takes for this mob to crawl into the vent
+	var/footstep = 0

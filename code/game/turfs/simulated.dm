@@ -8,7 +8,7 @@
 	nitrogen = MOLES_N2STANDARD
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
-
+	var/sound = "generic"
 
 
 /turf/simulated/proc/burn_tile()
@@ -41,9 +41,33 @@
 		overlays -= wet_overlay
 
 /turf/simulated/Entered(atom/A, atom/OL)
-	..()
-	if (istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
+	var/mob/living/M = A
+	
+	if(istype(M, /mob/living/carbon/human)) //human footsteps
+		var/mob/living/carbon/human/H = M
+		var/S = null
+		if(istype(H.shoes, /obj/item/clothing/shoes)) //no footsteps without shoes for maximum stealth
+			var/turf/simulated/T = H.loc
+			S = "sound/effects/footsteps/footstep_human_[T.sound]"
+			S += pick ("1","2","3","4")
+			S += ".ogg"
+			
+			if (!(fexists(S)))
+				S = "sound/effects/footsteps/footstep_human_floor"
+				S += pick ("1","2","3","4")
+				S += ".ogg"
+
+			if(H.m_intent == "run")
+				if(H.footstep >= 2)
+					H.footstep = 0
+					playsound(src, S, 100, 1)
+				else
+					H.footstep++
+			else
+				playsound(src, S, 60, 1)
+
+	if (istype(M,/mob/living/carbon))
+		// var/mob/living/carbon/M = A
 		switch(wet)
 			if(TURF_WET_WATER)
 				if(!M.slip(4, 2, null, NO_SLIP_WHEN_WALKING))
@@ -51,6 +75,9 @@
 				return
 			if(TURF_WET_LUBE)
 				M.slip(0, 7, null, (SLIDE|GALOSHES_DONT_HELP))
+
+
+
 
 /turf/simulated/ChangeTurf(var/path)
 	. = ..()
