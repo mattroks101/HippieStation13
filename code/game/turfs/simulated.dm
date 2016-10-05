@@ -43,7 +43,7 @@
 /turf/simulated/Entered(atom/A, atom/OL)
 	var/mob/living/M = A
 	
-	if(istype(M, /mob/living/carbon/human)) //human footsteps
+	/*if(istype(M, /mob/living/carbon/human)) //human footsteps
 		var/mob/living/carbon/human/H = M
 		var/S = null
 		if(istype(H.shoes, /obj/item/clothing/shoes)) //no footsteps without shoes for maximum stealth
@@ -64,7 +64,7 @@
 				else
 					H.footstep++
 			else
-				playsound(src, S, 60, 1)
+				playsound(src, S, 60, 1)*/
 
 	if (istype(M,/mob/living/carbon))
 		// var/mob/living/carbon/M = A
