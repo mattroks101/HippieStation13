@@ -326,7 +326,7 @@ var/datum/subsystem/ticker/ticker
 
 //################ASPECTS!!################
 /datum/subsystem/ticker/proc/choose_aspect()
-	aspect = pick(/datum/round_event/aspect/neko, /datum/round_event/aspect/lightsout, /datum/round_event/aspect/bad_hop, /datum/round_event/aspect/toolbox_salesman) //
+	aspect = pick(/datum/round_event/aspect/gifted)///datum/round_event/aspect/identity_crisis, /datum/round_event/aspect/rand_races, /datum/round_event/aspect/neko, /datum/round_event/aspect/lightsout, /datum/round_event/aspect/bad_hop, /datum/round_event/aspect/toolbox_salesman) //
 	if(aspect)
 		var/datum/round_event/aspect/A = new aspect()
 		world << "<FONT size=3 color='blue'><B>Hail Nanotrasen! [A.description]</B></FONT>"
