@@ -14,4 +14,4 @@
 		H.equipOutfit(/datum/outfit)
 		H.put_in_r_hand( new /obj/item/weapon/card/id/(H) )
 		H.put_in_l_hand( new /obj/item/device/pda(H) )
-		M.regenerate_icons()
+		H.regenerate_icons()
