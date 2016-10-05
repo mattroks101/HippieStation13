@@ -1073,6 +1073,7 @@
 				if(istype(affecting, /obj/item/organ/limb/head) && prob(hitcheck * (M.zone_sel.selecting == "mouth" ? 3 : 1))) //MUCH higher chance to knock out teeth if you aim for mouth
 					var/obj/item/organ/limb/head/U = affecting
 					if(U.knock_out_teeth(get_dir(M, H), round(rand(28, 38) * ((hitcheck*2)/100))))
+						playsound(H, get_sfx("gorey"), 25, 1, -1)
 						H.visible_message("<span class='danger'>[H]'s teeth sail off in an arc!</span>", \
 										"<span class='userdanger'>[H]'s teeth sail off in an arc!</span>")
 				add_logs(M, H, "punched")
@@ -1323,6 +1324,7 @@
 				var/obj/item/organ/limb/head/O = locate(/obj/item/organ/limb/head) in H.organs
 				if(prob(I.force * (def_zone == "mouth" ? 3 : 1)) && O) //Will the teeth fly out?
 					if(O.knock_out_teeth(get_dir(user, H), round(rand(28, 38) * ((I.force*1.5)/100))))
+						playsound(H, get_sfx("gorey"), 25, 1, -1)
 						H.visible_message("<span class='danger'>[H]'s teeth sail off in an arc!</span>", \
 										"<span class='userdanger'>[H]'s teeth sail off in an arc!</span>")
 				if(bloody)	//Apply blood

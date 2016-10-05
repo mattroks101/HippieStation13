@@ -152,7 +152,8 @@
 								"<span class='userdanger'>[user] tears off your tooth with [src]!</span>")
 				var/armor = H.run_armor_check(O, "melee")
 				H.apply_damage(rand(1,5), BRUTE, O, armor)
-				playsound(H, 'sound/misc/tear.ogg', 40, 1, -1) //RIP AND TEAR. RIP AND TEAR.
+				//playsound(H, 'sound/misc/tear.ogg', 40, 1, -1)//RIP AND TEAR. RIP AND TEAR.
+				playsound(H, 'sound/effects/trauma3.ogg', 40, 1, -1) 
 				H.emote("scream")
 				user.doing_something = 0
 			else
