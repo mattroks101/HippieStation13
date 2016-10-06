@@ -1,4 +1,4 @@
-//I can't get this to work.
+
 
 /datum/round_event_control/aspect/erp
 	name = "All Nude"
@@ -11,7 +11,12 @@
 /datum/round_event/aspect/erp/start()
 	
 	for(var/mob/living/carbon/human/H in living_mob_list)
-		H.equipOutfit(/datum/outfit)
-		H.put_in_r_hand( new /obj/item/weapon/card/id/(H) )
-		H.put_in_l_hand( new /obj/item/device/pda(H) )
-		H.regenerate_icons()
+		//qdel(H.belt)
+		qdel(H.back)
+		qdel(H.ears)
+		qdel(H.gloves)
+		qdel(H.head)
+		qdel(H.shoes)
+		//qdel(H.wear_id)
+		qdel(H.wear_suit)
+		qdel(H.w_uniform)

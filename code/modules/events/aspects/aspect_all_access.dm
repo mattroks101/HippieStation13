@@ -13,7 +13,7 @@
 		if(!istype(H))//Sanity check.
 			return
 
-		trustworthy1 = pick("Clown", "Librarian", "Chef")
+		trustworthy1 = pick("Clown", "Librarian", "Chef")//Very trustworthy indeed.
 		trustworthy2 = pick("Mime", "Assistant", "Janitor")
 
 		if(H.mind.assigned_role == trustworthy1 || H.mind.assigned_role == trustworthy2)
@@ -36,5 +36,5 @@
 			return
 
 		if(H.mind.assigned_role == "Mime" || H.mind.assigned_role == "Clown")//Oh shit we got a mime and clown here!
-			var/obj/item/weapon/card/id/W = H.wear_id//Get their ID.
-			W.access = get_all_accesses()//And give them all access.
+			var/obj/item/weapon/card/id/W = H.wear_id
+			W.access = get_all_accesses()
