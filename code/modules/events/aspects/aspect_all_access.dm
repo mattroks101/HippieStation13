@@ -19,6 +19,7 @@
 		if(H.mind.assigned_role == trustworthy1 || H.mind.assigned_role == trustworthy2)
 			var/obj/item/weapon/card/id/W = H.wear_id//Get their ID.
 			W.access = get_all_accesses()//And give them all access.
+			H << "<B>You are very trustworthy today!</B>"
 
 
 
@@ -38,3 +39,4 @@
 		if(H.mind.assigned_role == "Mime" || H.mind.assigned_role == "Clown")//Oh shit we got a mime and clown here!
 			var/obj/item/weapon/card/id/W = H.wear_id
 			W.access = get_all_accesses()
+			H << "<B>You are very trustworthy today!</B>"
