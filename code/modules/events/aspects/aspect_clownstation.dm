@@ -11,7 +11,7 @@
 /datum/round_event/aspect/clownstation/start()
 	for(var/mob/living/carbon/human/H in mob_list)
 		if(H.stat!=2 && H.mind && (H.mind.assigned_role in command_positions))
-			qdel(H.wear_suit)
+			//qdel(H.wear_suit)
 			qdel(H.w_uniform)
 			qdel(H.shoes)
 
