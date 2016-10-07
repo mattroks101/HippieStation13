@@ -13,4 +13,4 @@
 
 		//OH GOOD LORD WHY!
 		if(H.mind.assigned_role == "Scientist" || H.mind.assigned_role == "Roboticist" || H.mind.assigned_role == "Research Director")
-			H.adjustBrainLoss(200)
+			H.adjustBrainLoss(60)
