@@ -1074,6 +1074,7 @@
 #include "code\modules\events\aspects\aspect_kitty.dm"
 #include "code\modules\events\aspects\aspect_race.dm"
 #include "code\modules\events\aspects\aspect_toolbox.dm"
+#include "code\modules\events\aspects\aspect_two_captains.dm"
 #include "code\modules\events\aspects\aspects.dm"
 #include "code\modules\events\holiday\halloween.dm"
 #include "code\modules\events\holiday\xmas.dm"
