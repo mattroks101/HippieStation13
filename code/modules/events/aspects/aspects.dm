@@ -39,6 +39,11 @@ IT'S IMPORTANT TO REMEMBER THAT YES, ASPECTS HAVE THE HUGE POTENTIAL TO RUIN GAM
 	for(var/obj/machinery/light/L in machines)
 		L.broken()
 
+	for(var/mob/living/carbon/human/H in living_mob_list)
+		if(!istype(H))//Sanity check.
+			return
+		H.put_in_r_hand( new /obj/item/device/flashlight(H) )
+
 
 /*
 /client/proc/forceAspect()
