@@ -11,12 +11,10 @@
 /datum/round_event/aspect/erp/start()
 	
 	for(var/mob/living/carbon/human/H in living_mob_list)
-		//qdel(H.belt)
 		qdel(H.back)
 		qdel(H.ears)
 		qdel(H.gloves)
 		qdel(H.head)
 		qdel(H.shoes)
-		//qdel(H.wear_id)
 		qdel(H.wear_suit)
 		qdel(H.w_uniform)

@@ -26,7 +26,7 @@
 
 //GIVING JUST THE CLOWN AND MIME ALL ACCESS
 /datum/round_event_control/aspect/bad_hop/clown
-	name = "Bad HoP Again"
+	name = "Bad HoP Clown and Mime"
 	typepath = /datum/round_event/aspect/bad_hop/clown
 
 /datum/round_event/aspect/bad_hop/clown//No sense defining this twice, it's the same as the last one.

@@ -33,8 +33,21 @@ IT'S IMPORTANT TO REMEMBER THAT YES, ASPECTS HAVE THE HUGE POTENTIAL TO RUIN GAM
 
 /datum/round_event/aspect/lightsout
 	name = "Dark Days Ahead"
-	description = "Nanotrasen has decided that having lights is too exspensive."
+	description = "Nanotrasen has decided that having lights is too expensive."
 
 /datum/round_event/aspect/lightsout/start()//Round starts with all lights destroyed! Do not actually try to play like this! It sucks!
 	for(var/obj/machinery/light/L in machines)
 		L.broken()
+
+
+/*
+/client/proc/forceAspect()
+	set name = "Force Aspect"
+	set category = "Fun"
+
+	if(!holder ||!check_rights(R_FUN))
+		return
+
+	holder.forceEvent()
+
+/datum/admins/proc/forceEvent()*/
